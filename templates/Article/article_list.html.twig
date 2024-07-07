@@ -1,0 +1,38 @@
+{# templates/article/article_list.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Article List{% endblock %}
+
+{% block body %}
+    <h1>Article List</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>
+                        <span class="{{ article.id % 2 == 0 ? 'id-even' : 'id-odd' }}">
+                            {{ article.id }}
+                        </span>
+                </td>
+                <td><a href="{{ path('article_show', {id: article.id}) }}">{{ article.title }}</a></td>
+                <td>
+                    <a href="{{ path('article_edit', {id: article.id}) }}">Edit</a>
+                    <a href="{{ path('article_delete', {id: article.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No articles found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('article_new') }}">Create New Article</a>
+{% endblock %}

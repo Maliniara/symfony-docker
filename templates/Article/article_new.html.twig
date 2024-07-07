@@ -1,0 +1,45 @@
+{# templates/article/new.html.twig #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Article</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
+<button class="dark-mode-toggle btn btn-dark-mode" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+<div class="container">
+    <h1>Create New Article</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.title) }}
+
+    <div>
+        {{ form_label(form.content) }}
+        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Create Article</button>
+        <a href="{{ path('main_page') }}" class="btn btn-secondary">Cancel</a>
+    </div>
+
+    {{ form_end(form) }}
+</div>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+    }
+
+    window.onload = () => {
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+    }
+</script>
+</body>
+</html>
