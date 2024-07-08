@@ -1,0 +1,39 @@
+# config/routes.yaml
+
+main_page:
+    path: /artykuly
+    controller: App\Controller\BlogController::mainPage
+
+article_show:
+    path: /article/{id}
+    controller: App\Controller\BlogController::showArticle
+    requirements:
+        id: '\d+'
+
+article_edit:
+    path: /article/edit/{id}
+    controller: App\Controller\BlogController::editArticle
+    requirements:
+        id: '\d+'
+
+article_delete:
+    path: /article/delete/{id}
+    controller: App\Controller\BlogController::deleteArticle
+    requirements:
+        id: '\d+'
+
+article_new:
+    path: /article/new
+    controller: App\Controller\BlogController::newArticle
+
+about_me_index:
+    path: /aboutme
+    controller: App\Controller\AboutMeController::index
+
+about_me_add:
+    path: /aboutme/add
+    controller: App\Controller\AboutMeController::add
+
+about_me_edit:
+    path: /aboutme/edit
+    controller: App\Controller\AboutMeController::edit

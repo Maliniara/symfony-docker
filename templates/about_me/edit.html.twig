@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit About Me Data{% endblock %}
+
+{% block body %}
+    <h1>Edit About Me Data</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Save Changes</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('about_me') }}">Cancel</a>
+{% endblock %}

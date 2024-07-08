@@ -1,5 +1,7 @@
+{# templates/article/article_show.html.twig #}
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>{{ article.title }}</title>
@@ -7,16 +9,15 @@
 </head>
 <body>
 <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-<div class="container">
-    <h1>
-        {{ article.title }} -
-        <span class="{{ article.id % 2 == 0 ? 'id-even' : 'id-odd' }}">
-                {{ article.id }}
-            </span>
-    </h1>
-    <p>{{ article.content | slice(0, 150) ~ '...' }}</p>
-    <a href="{{ path('main_page') }}">Back to list</a>
-</div>
+<h1>
+    {{ article.title }} -
+    <span class="{{ article.id % 2 == 0 ? 'id-even' : 'id-odd' }}">
+            {{ article.id }}
+        </span>
+</h1>
+<p>{{ article.content | slice(0, 150) ~ '...' }}</p>
+<p>Added: {{ article.dateAdded | date('Y-m-d H:i:s') }}</p>
+<a href="{{ path('main_page') }}">Back to list</a>
 <script>
     function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');

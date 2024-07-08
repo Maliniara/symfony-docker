@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About Me{% endblock %}
+
+{% block body %}
+    <h1>About Me</h1>
+
+    <ul>
+        {% for data in aboutMeData %}
+            <li>{{ data.keyName }}: {{ data.value }} <a href="{{ path('about_me_edit', {'id': data.id}) }}">Edit</a> | <a href="{{ path('about_me_delete', {'id': data.id, 'token': csrf_token('delete' ~ data.id) }) }}">Delete</a></li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('about_me_add') }}">Add New Data</a>
+{% endblock %}
